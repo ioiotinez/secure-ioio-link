@@ -19,7 +19,7 @@ export default function Home() {
 	};
 
 	const clearText = () => {
-		location.reload();
+		setTextLink("");
 	};
 
 	const copyText = () => {
@@ -47,7 +47,10 @@ export default function Home() {
 					erased after being read <b>one time</b>
 				</p>
 				<div>
-					<TextLinkArea onChange={handleTextLink}></TextLinkArea>
+					<TextLinkArea
+						value={textLink}
+						onChange={handleTextLink}
+					></TextLinkArea>
 				</div>
 				<div>
 					<Button onClick={generateLink} variant="primary">

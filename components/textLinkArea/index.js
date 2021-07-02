@@ -1,6 +1,6 @@
 import styles from "../../styles/Home.module.css";
 
-export default function TextLinkArea({ onChange }) {
+export default function TextLinkArea({ onChange, value }) {
 	return (
 		<>
 			<textarea
@@ -9,6 +9,7 @@ export default function TextLinkArea({ onChange }) {
 				defaultValue=""
 				className={styles.textLink}
 				onChange={onChange}
+				value={value}
 			></textarea>
 		</>
 	);
