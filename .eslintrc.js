@@ -3,6 +3,7 @@ const RULES = {
 	WARN: "warn",
 	ERROR: "error",
 };
+//
 
 module.exports = {
 	env: {

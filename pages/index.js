@@ -1,9 +1,8 @@
 import Head from "next/head";
 import { Button, Container } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getuuid } from "../utils/random";
 import TextLinkArea from "../components/textLinkArea";
-import { addLinkToCollection } from "../util/db";
 
 export default function Home() {
 	const [textLink, setTextLink] = useState();
@@ -14,13 +13,21 @@ export default function Home() {
 	};
 
 	const generateLink = async () => {
-		const uuid = getuuid();
-		setRandomLink(uuid.substr(0, 6));
-		await addLinkToCollection({
-			message: textLink,
-			code: randomLink,
-			entireLink: getURl(),
+		const uuid = await getuuid();
+		const link = uuid.substr(0, 6);
+		setRandomLink(link);
+		fetch("/api/postLink", {
+			body: JSON.stringify({
+				message: textLink,
+				code: link,
+				entireLink: getURl(),
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+			method: "POST",
 		});
+
 		clearText();
 	};
 
@@ -41,6 +48,13 @@ export default function Home() {
 			randomLink;
 		return text;
 	};
+
+	useEffect(() => {
+		// Actualiza el título del documento usando la API del navegador
+		fetch("/api/hello")
+			.then((res) => res.json())
+			.then((json) => console.log(json));
+	}, []);
 
 	return (
 		<>
@@ -89,3 +103,4 @@ export default function Home() {
 		</>
 	);
 }
+//

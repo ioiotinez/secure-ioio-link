@@ -12,8 +12,6 @@ var firebaseConfig = {
 	appName: process.env.NEXT_PUBLIC_appName,
 };
 
-console.log(firebaseConfig);
-
 if (!firebase.apps.length) {
 	firebase.initializeApp(firebaseConfig);
 } else {
@@ -36,4 +34,17 @@ export const addLinkToCollection = (link) => {
 		.catch((error) => {
 			console.error("Error adding document: ", error);
 		});
+};
+
+export const getLink = async (code) => {
+	const result = await db.collection("links").get();
+	let returnObject = null;
+
+	result.forEach((doc) => {
+		console.log(doc.data());
+		if (doc.data().code == code) {
+			returnObject = doc.data();
+		}
+	});
+	return returnObject;
 };
