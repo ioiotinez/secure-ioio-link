@@ -13,6 +13,7 @@ export default function Home() {
 	};
 
 	const generateLink = async () => {
+		setRandomLink("");
 		const uuid = await getuuid();
 		const link = uuid.substr(0, 6);
 		setRandomLink(link);
@@ -29,6 +30,20 @@ export default function Home() {
 		});
 
 		clearText();
+	};
+
+	const deleteNow = async () => {
+		await fetch("/api/deleteLink?", {
+			body: JSON.stringify({
+				code: randomLink,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+			method: "DELETE",
+		});
+
+		setRandomLink("");
 	};
 
 	const clearText = () => {
@@ -94,7 +109,9 @@ export default function Home() {
 							<Button onClick={copyText} variant="link">
 								Copy
 							</Button>{" "}
-							<Button variant="danger">Delete now!</Button>
+							<Button variant="danger" onClick={deleteNow}>
+								Delete now!
+							</Button>
 						</>
 					)}
 				</div>

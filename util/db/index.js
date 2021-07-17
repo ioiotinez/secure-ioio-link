@@ -41,10 +41,16 @@ export const getLink = async (code) => {
 	let returnObject = null;
 
 	result.forEach((doc) => {
-		console.log(doc.data());
 		if (doc.data().code == code) {
 			returnObject = doc.data();
 		}
 	});
 	return returnObject;
+};
+
+export const deleteLinkFromCollection = async (params) => {
+	var deleteQuery = db.collection("links").where("code", "==", params.code);
+	deleteQuery.get().then((query) => {
+		query.forEach((doc) => doc.ref.delete());
+	});
 };
