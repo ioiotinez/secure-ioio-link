@@ -5,8 +5,7 @@ export default function TextLinkArea({ onChange, value }) {
 		<>
 			<textarea
 				rows="10"
-				cols="50"
-				defaultValue=""
+				cols="40"
 				className={styles.textLink}
 				onChange={onChange}
 				value={value}
