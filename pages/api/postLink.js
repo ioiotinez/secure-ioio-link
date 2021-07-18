@@ -1,4 +1,5 @@
 import { addLinkToCollection } from "../../util/db";
+import CryptoJS from "crypto-js";
 
 export default async function handler(req, res) {
 	if (req.method !== "POST") {
@@ -6,6 +7,14 @@ export default async function handler(req, res) {
 		return;
 	}
 
-	const params = req.body;
+	let params = req.body;
+
+	console.log(params);
+
+	params.message = CryptoJS.AES.encrypt(
+		params.message,
+		process.env.NEXT_PUBLIC_keyAes
+	).toString();
+
 	await addLinkToCollection(params);
 }
