@@ -9,7 +9,12 @@ const Secret = () => {
 
 	useEffect(async () => {
 		if (!router.isReady) return;
-		fetch("/api/getLink?" + "code=" + router.query.pid).then((data) => {
+		fetch("/api/getLink?" + "code=" + router.query.pid, {
+			headers: {
+				"Content-Type": "application/json",
+				"access-control-allow-origin": "*",
+			},
+		}).then((data) => {
 			data.json().then((json) => {
 				if (json.code != "404") {
 					setLink(json);
@@ -26,6 +31,7 @@ const Secret = () => {
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				"access-control-allow-origin": "*",
 			},
 			method: "DELETE",
 		});

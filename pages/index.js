@@ -24,6 +24,7 @@ export default function Home() {
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				"access-control-allow-origin": "*",
 			},
 			method: "POST",
 		});
@@ -38,6 +39,7 @@ export default function Home() {
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				"access-control-allow-origin": "*",
 			},
 			method: "DELETE",
 		});
@@ -62,13 +64,6 @@ export default function Home() {
 			randomLink;
 		return text;
 	};
-
-	useEffect(() => {
-		// Actualiza el título del documento usando la API del navegador
-		fetch("/api/hello")
-			.then((res) => res.json())
-			.then((json) => console.log(json));
-	}, []);
 
 	return (
 		<>
