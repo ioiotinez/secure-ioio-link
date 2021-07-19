@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getuuid } from "../utils/random";
 import TextLinkArea from "../components/TextLinkArea";
 
