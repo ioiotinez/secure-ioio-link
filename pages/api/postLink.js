@@ -9,8 +9,6 @@ export default async function handler(req, res) {
 
 	let params = req.body;
 
-	console.log(params);
-
 	params.message = CryptoJS.AES.encrypt(
 		params.message,
 		process.env.NEXT_PUBLIC_keyAes
