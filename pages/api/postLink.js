@@ -1,5 +1,5 @@
-import { addLinkToCollection } from "../../util/db";
 import CryptoJS from "crypto-js";
+import { firestore } from "../../util/firebase";
 
 export default async function handler(req, res) {
 	if (req.method !== "POST") {
@@ -14,5 +14,12 @@ export default async function handler(req, res) {
 		process.env.NEXT_PUBLIC_keyAes
 	).toString();
 
-	await addLinkToCollection(params);
+	firestore
+		.collection("links")
+		.doc(params.code)
+		.set({
+			message: params.message,
+			entireLink: params.entireLink,
+		})
+		.then(res.status(200).json({ errorId: "0" }));
 }

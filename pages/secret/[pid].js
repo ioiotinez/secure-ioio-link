@@ -16,9 +16,9 @@ const Secret = () => {
 			},
 		}).then((data) => {
 			data.json().then((json) => {
-				if (json.code != "404") {
+				if (json.error === undefined) {
 					setLink(json);
-					deleteLink(json.code);
+					deleteLink(router.query.pid);
 				}
 			});
 		});
@@ -31,7 +31,6 @@ const Secret = () => {
 			}),
 			headers: {
 				"Content-Type": "application/json",
-				"access-control-allow-origin": "*",
 			},
 			method: "DELETE",
 		});
