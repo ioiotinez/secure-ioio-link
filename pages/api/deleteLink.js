@@ -1,4 +1,4 @@
-import { deleteLinkFromCollection } from "../../util/db";
+import { firestore } from "../../util/firebase";
 
 export default async function handler(req, res) {
 	if (req.method !== "DELETE") {
@@ -8,7 +8,10 @@ export default async function handler(req, res) {
 
 	const params = req.body;
 
-	await deleteLinkFromCollection(params);
-
-	res.status(200).json({ result: "OK" });
+	firestore
+		.collection("links")
+		.doc(params.code)
+		.delete()
+		.then(() => res.status(200).json({ result: "ok" }))
+		.catch((err) => res.status(500).json({ error: err }));
 }
