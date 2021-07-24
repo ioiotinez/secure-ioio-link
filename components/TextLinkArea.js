@@ -1,7 +1,12 @@
-export default function TextLinkArea({ onChange, value, disabled }) {
+export default function TextLinkArea({
+	onChange,
+	value,
+	disabled,
+	placeholder,
+}) {
 	return (
 		<>
-			<div className="fadeIn">
+			<div>
 				<textarea
 					rows="10"
 					cols="40"
@@ -9,6 +14,7 @@ export default function TextLinkArea({ onChange, value, disabled }) {
 					onChange={onChange}
 					value={value}
 					disabled={disabled}
+					placeholder={placeholder}
 				></textarea>
 			</div>
 		</>

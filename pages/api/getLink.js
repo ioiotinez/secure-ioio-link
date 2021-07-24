@@ -7,15 +7,13 @@ export default async function handler(req, res) {
 		return;
 	}
 
-	console.log(process.env.NEXT_PUBLIC_keyAes);
-
 	firestore
 		.collection("links")
 		.doc(req.query.code)
 		.get()
 		.then((data) => {
 			let infoLink = data.data();
-			if (infoLink !== null) {
+			if (infoLink !== undefined) {
 				infoLink.message = CryptoJS.AES.decrypt(
 					infoLink.message,
 					process.env.NEXT_PUBLIC_keyAes
