@@ -10,7 +10,6 @@ const Secret = () => {
 	const [showNewLink, setShowNewLink] = useState(false);
 
 	useEffect(async () => {
-		console.log("Paso");
 		if (!router.isReady) return;
 		fetch("/api/getLink?" + "code=" + router.query.pid, {
 			headers: {
@@ -19,7 +18,7 @@ const Secret = () => {
 			},
 		}).then((data) => {
 			data.json().then((json) => {
-				if (json.error === undefined) {
+				if (json.errorCode === 200) {
 					setLink(json);
 					deleteLink(router.query.pid);
 				} else {
