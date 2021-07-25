@@ -7,26 +7,34 @@ export default async function handler(req, res) {
 		return;
 	}
 
-	firestore
-		.collection("links")
-		.doc(req.query.code)
-		.get()
-		.then((data) => {
-			let infoLink = data.data();
-			if (infoLink !== undefined) {
-				infoLink.message = CryptoJS.AES.decrypt(
-					infoLink.message,
-					process.env.NEXT_PUBLIC_keyAes
-				).toString(CryptoJS.enc.Utf8);
-				res.status(200).json(infoLink);
-			} else {
-				res
-					.status(404)
-					.json({ error: 404, errorMessage: "Not link info found" });
-			}
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).json({ error: err });
-		});
+	const infoLink = await getLinkToFirebase(req.query.code, 1);
+	res.status(infoLink.errorCode).json(infoLink);
 }
+
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
+const getLinkToFirebase = async (code, attemps) => {
+	try {
+		const data = await firestore.collection("links").doc(code).get();
+
+		let infoLink = data.data();
+		if (infoLink === undefined) {
+			if (attemps > 0) {
+				await delay(500);
+				return await getLinkToFirebase(code, attemps - 1);
+			} else {
+				return { errorCode: 404 };
+			}
+		} else {
+			infoLink.message = CryptoJS.AES.decrypt(
+				infoLink.message,
+				process.env.NEXT_PUBLIC_keyAes
+			).toString(CryptoJS.enc.Utf8);
+			infoLink.errorCode = 200;
+
+			return infoLink;
+		}
+	} catch (err) {
+		return { errorCode: 500 };
+	}
+};
