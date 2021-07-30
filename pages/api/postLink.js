@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 		.doc(params.code)
 		.set({
 			message: params.message,
-			entireLink: params.entireLink,
+			date: new Date().toGMTString(),
 		})
 		.then(res.status(200).json({ errorId: "0" }));
 }
