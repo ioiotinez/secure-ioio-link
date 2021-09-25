@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { getuuid } from "../utils/random";
 import TextLinkArea from "../components/TextLinkArea";
+import SecretKey from "../components/SecretKey";
 
 export default function Home() {
 	const [textLink, setTextLink] = useState();
@@ -88,6 +89,7 @@ export default function Home() {
 									placeholder={"Write your text here"}
 								></TextLinkArea>
 							</div>
+							<SecretKey />
 							<div style={{ marginTop: "10px" }}>
 								<button
 									className="btn btn-primary"
