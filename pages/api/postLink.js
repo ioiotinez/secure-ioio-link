@@ -14,12 +14,20 @@ export default async function handler(req, res) {
 		process.env.NEXT_PUBLIC_keyAes
 	).toString();
 
+	if (params.password) {
+		params.password = CryptoJS.AES.encrypt(
+			params.password,
+			process.env.NEXT_PUBLIC_keyAes
+		).toString();
+	}
+
 	firestore
 		.collection("links")
 		.doc(params.code)
 		.set({
 			message: params.message,
 			date: new Date().toGMTString(),
+			pass: params.password,
 		})
 		.then(res.status(200).json({ errorId: "0" }));
 }

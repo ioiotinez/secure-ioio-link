@@ -7,6 +7,9 @@ import SecretKey from "../components/SecretKey";
 export default function Home() {
 	const [textLink, setTextLink] = useState();
 	const [randomLink, setRandomLink] = useState("");
+	const [canGenerate, setCanGenerate] = useState();
+	const [useSecretKey, setUseSecretKey] = useState();
+	const [password, setPassword] = useState();
 
 	const handleTextLink = (e) => {
 		setTextLink(e.target.value);
@@ -22,6 +25,7 @@ export default function Home() {
 				message: textLink,
 				code: link,
 				entireLink: getURl(),
+				password: useSecretKey ? password : null,
 			}),
 			headers: {
 				"Content-Type": "application/json",
@@ -50,6 +54,7 @@ export default function Home() {
 
 	const clearText = () => {
 		setTextLink("");
+		setPassword();
 	};
 
 	const copyText = () => {
@@ -64,6 +69,10 @@ export default function Home() {
 			"/secret/" +
 			randomLink;
 		return text;
+	};
+
+	const setValid = (value) => {
+		setCanGenerate(value);
 	};
 
 	return (
@@ -89,12 +98,19 @@ export default function Home() {
 									placeholder={"Write your text here"}
 								></TextLinkArea>
 							</div>
-							<SecretKey />
+							<div>
+								<SecretKey
+									setValid={setValid}
+									useSecretKey={setUseSecretKey}
+									secretKeyResult={setPassword}
+								/>
+							</div>
 							<div style={{ marginTop: "10px" }}>
 								<button
 									className="btn btn-primary"
 									onClick={generateLink}
 									variant="primary"
+									disabled={!canGenerate}
 								>
 									Generate link
 								</button>{" "}
