@@ -1,4 +1,15 @@
-@import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+@import url("https://fonts.googleapis.com/css?family=Gloria+Hallelujah");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
+
+html {
+	margin: 0;
+	width: 100%;
+}
+
+body {
+	margin: 0;
+	width: 100%;
+}
 
 textarea {
 	font: 15px "Gloria Hallelujah", cursive;
@@ -14,7 +25,25 @@ textarea {
 	padding: 10px;
 }
 
+@media (min-width: 520px) {
+	textarea {
+		width: 50%;
+		height: 50%;
+	}
+}
+
 textarea:focus {
 	background-color: #fff;
 	border-bottom: 2px solid #5fbae9;
+}
+
+.btn {
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid black;
+}
+
+.secondary {
+	background-color: gray;
+	color: white;
 }

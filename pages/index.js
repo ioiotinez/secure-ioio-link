@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { getuuid } from "../utils/random";
 import TextLinkArea from "../components/TextLinkArea";
+import Layout from "../components/Layout";
 
 export default function Home() {
 	const [textLink, setTextLink] = useState();
@@ -72,9 +73,9 @@ export default function Home() {
 				<meta name="description" content="Generated secure links" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div>
+			<Layout>
 				<div className="px-4 pt-5 my-5 text-center">
-					<h1 className="header">Welcome to Secure Ioio Link</h1>
+					<h2>Welcome to Secure Ioio Link</h2>
 					<p>
 						Share secure links to send data confidentially. Data will be erased
 						after being read <b>one time</b>
@@ -90,14 +91,14 @@ export default function Home() {
 							</div>
 							<div style={{ marginTop: "10px" }}>
 								<button
-									className="btn btn-primary"
+									className="btn"
 									onClick={generateLink}
 									variant="primary"
 								>
 									Generate link
 								</button>{" "}
 								<button
-									className="btn btn-secondary"
+									className="btn secondary"
 									onClick={clearText}
 									variant="secondary"
 								>
@@ -131,10 +132,10 @@ export default function Home() {
 						</div>
 					</div>
 					<footer style={{ marginTop: "50px" }}>
-						Powered by github.com/ioiotinez
+						<small>Powered by github.com/ioiotinez</small>
 					</footer>
 				</div>
-			</div>
+			</Layout>
 		</>
 	);
 }
