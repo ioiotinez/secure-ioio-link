@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import TextLinkArea from "../../components/TextLinkArea";
 import NotLink from "../../components/NotLink";
+import Layout from "../../components/Layout";
+import Head from "next/head";
 
 const Secret = () => {
 	const router = useRouter();
@@ -41,16 +43,23 @@ const Secret = () => {
 		});
 	};
 
+	if (!router.isReady || (!link && !showNotExist)) {
+		return <></>;
+	}
+
 	return (
 		<>
-			<div className="px-4 pt-5 my-5 text-center">
+			<Head>
+				<title>Secure IoioLink</title>
+			</Head>
+			<Layout>
 				<div>
 					{link ? (
 						<>
 							<h2>Link id: {router.query.pid}</h2>
 							<TextLinkArea value={link.message} disabled={true}></TextLinkArea>
 							<div>
-								<p style={{ marginTop: "40px" }}>
+								<p className="danger" style={{ marginTop: "40px" }}>
 									<b>This link is already burned!</b>
 								</p>
 							</div>
@@ -70,7 +79,7 @@ const Secret = () => {
 						</>
 					)}
 				</div>
-			</div>
+			</Layout>
 		</>
 	);
 };

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getuuid } from "../utils/random";
 import TextLinkArea from "../components/TextLinkArea";
 import Layout from "../components/Layout";
+import GenerateLink from "../components/GenerateLink";
 
 export default function Home() {
 	const [textLink, setTextLink] = useState();
@@ -33,27 +34,8 @@ export default function Home() {
 		clearText();
 	};
 
-	const deleteNow = async () => {
-		await fetch("/api/deleteLink?", {
-			body: JSON.stringify({
-				code: randomLink,
-			}),
-			headers: {
-				"Content-Type": "application/json",
-				"access-control-allow-origin": "*",
-			},
-			method: "DELETE",
-		});
-
-		setRandomLink("");
-	};
-
 	const clearText = () => {
 		setTextLink("");
-	};
-
-	const copyText = () => {
-		navigator.clipboard.writeText(getURl());
 	};
 
 	const getURl = () => {
@@ -74,8 +56,8 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Layout>
-				<div className="px-4 pt-5 my-5 text-center">
-					<h2>Welcome to Secure Ioio Link</h2>
+				<div>
+					<h1>Welcome to Secure Ioio Link</h1>
 					<p>
 						Share secure links to send data confidentially. Data will be erased
 						after being read <b>one time</b>
@@ -108,24 +90,7 @@ export default function Home() {
 							<div style={{ marginTop: "20px" }}>
 								{randomLink && (
 									<>
-										<b>
-											{window.location.protocol}
-											{"//"}
-											{window.location.host}/secret/{randomLink}
-										</b>
-										<div>
-											<button
-												className="btn btn-link"
-												onClick={copyText}
-												variant="link"
-											>
-												Copy
-											</button>
-										</div>
-
-										<button className="btn btn-danger" onClick={deleteNow}>
-											Delete now!
-										</button>
+										<GenerateLink randomLink={randomLink} />
 									</>
 								)}
 							</div>

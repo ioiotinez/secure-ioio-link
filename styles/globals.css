@@ -12,24 +12,19 @@ body {
 }
 
 textarea {
-	font: 15px "Gloria Hallelujah", cursive;
+	/* font: 15px "Gloria Hallelujah", cursive; */
+	font: 15px;
 	line-height: 1.5;
-	border: 0;
+	border: 1px solid black;
 	border-radius: 3px;
 	background: linear-gradient(#f9efaf, #f7e98d);
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	transition: box-shadow 0.5s ease;
 	max-width: 95%;
 	max-height: 30%;
 	padding: 10px;
-}
-
-@media (min-width: 520px) {
-	textarea {
-		width: 50%;
-		height: 50%;
-	}
+	box-sizing: border-box;
+	resize: none;
 }
 
 textarea:focus {
@@ -41,9 +36,23 @@ textarea:focus {
 	padding: 10px;
 	border-radius: 10px;
 	border: 1px solid black;
+	cursor: pointer;
+}
+
+.btn:hover {
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn:active {
+	border: 2px solid black;
 }
 
 .secondary {
 	background-color: gray;
+	color: white;
+}
+
+.danger {
+	background-color: tomato;
 	color: white;
 }
