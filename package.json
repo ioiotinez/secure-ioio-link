@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "bootstrap": "^5.0.0-beta3",
     "crypto-js": "^4.0.0",
     "firebase": "^8.7.0",
     "firebase-admin": "^9.11.0",
