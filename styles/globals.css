@@ -1,20 +1,58 @@
-@import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+@import url("https://fonts.googleapis.com/css?family=Gloria+Hallelujah");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
+
+html {
+	margin: 0;
+	width: 100%;
+}
+
+body {
+	margin: 0;
+	width: 100%;
+}
 
 textarea {
-	font: 15px "Gloria Hallelujah", cursive;
+	/* font: 15px "Gloria Hallelujah", cursive; */
+	font: 15px;
 	line-height: 1.5;
-	border: 0;
+	border: 1px solid black;
 	border-radius: 3px;
 	background: linear-gradient(#f9efaf, #f7e98d);
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	transition: box-shadow 0.5s ease;
 	max-width: 95%;
 	max-height: 30%;
 	padding: 10px;
+	box-sizing: border-box;
+	resize: none;
 }
 
 textarea:focus {
 	background-color: #fff;
 	border-bottom: 2px solid #5fbae9;
+}
+
+.btn {
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+.btn:hover {
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn:active {
+	border: 2px solid black;
+}
+
+.secondary {
+	background-color: gray;
+	color: white;
+}
+
+.danger {
+	background-color: tomato;
+	color: white;
 }
