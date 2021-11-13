@@ -4,6 +4,7 @@ import { getuuid } from "../utils/random";
 import TextLinkArea from "../components/TextLinkArea";
 import Layout from "../components/Layout";
 import GenerateLink from "../components/GenerateLink";
+import SecretKey from "../components/SecretKey";
 
 export default function Home() {
 	const [textLink, setTextLink] = useState();

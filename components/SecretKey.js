@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import classes from "./SecretKey.module.css";
 
 const SecretKey = ({ setValid, useSecretKey, secretKeyResult }) => {
 	const [showMoreOptions, setShowMoreOptions] = useState();
@@ -25,12 +26,16 @@ const SecretKey = ({ setValid, useSecretKey, secretKeyResult }) => {
 
 	return (
 		<>
-			<button onClick={handleMoreOptions} className="btn btn-secondary">
+			<button
+				onClick={handleMoreOptions}
+				className="btn btn-secondary"
+				style={{ marginTop: "10px" }}
+			>
 				{textButton}
 			</button>
 			{showMoreOptions && (
 				<div
-					className="container"
+					className={classes.passwordContainer}
 					style={{
 						margin: "0 auto",
 						width: "60%",
@@ -38,22 +43,24 @@ const SecretKey = ({ setValid, useSecretKey, secretKeyResult }) => {
 						maxWidth: "300px",
 					}}
 				>
-					<div className="form-group">
+					<div>
 						<label htmlFor="secretKey">Password: </label>
+						<br />
 						<input
 							id="secretKey"
 							type="password"
-							className="form-control"
+							className={classes.inputPassword}
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						></input>
 					</div>
-					<div className="form-group">
+					<div>
 						<label htmlFor="confirmSecretKey">Confirm password: </label>
+						<br />
 						<input
 							id="confirmSecretKey"
 							type="password"
-							className="form-control"
+							className={classes.inputPassword}
 							value={repeatPassword}
 							onChange={(e) => setRepeatPassword(e.target.value)}
 						></input>
