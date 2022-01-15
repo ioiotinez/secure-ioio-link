@@ -32,26 +32,30 @@ function GenerateLink({ randomLink }) {
 		<>
 			<div>
 				{!deleted ? (
-					<>
-						<h4>{entireLink}</h4>
+					<div className="m-3 rounded-lg shadow-md">
+						<div className="m-3">
+							<div className="underline">
+								{entireLink}
+								<button
+									className="ml-2 text-sm p-2 rounded border-2 bg-blue-200 mt-4"
+									onClick={copyLink}
+								>
+									Copy
+								</button>
+							</div>
+						</div>
 						<div>
 							<button
-								className="p-2 rounded border-2 bg-blue-200 mt-4"
-								onClick={copyLink}
-							>
-								Copy
-							</button>
-							<button
-								className="p-2 rounded border-2 bg-red-800 mt-4 text-white"
+								className="p-2 rounded border-2 bg-red-800 mt-4 mb-4 text-white"
 								onClick={deleteLink}
 							>
 								Delete!
 							</button>
 						</div>
-					</>
+					</div>
 				) : (
 					<>
-						<h4>{`Link id ${randomLink} was delete!`}</h4>
+						<div className="m-4 text-red-700 font-bold text-lg">{`Link id ${randomLink} was delete!`}</div>
 					</>
 				)}
 			</div>
