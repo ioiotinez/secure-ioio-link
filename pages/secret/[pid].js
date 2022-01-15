@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import TextLinkArea from "../../components/TextLinkArea";
 import NotLink from "../../components/NotLink";
-import Layout from "../../components/Layout";
 import Head from "next/head";
 
 const Secret = () => {
