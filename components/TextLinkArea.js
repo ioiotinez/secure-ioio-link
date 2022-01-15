@@ -10,7 +10,7 @@ export default function TextLinkArea({
 				<textarea
 					rows="10"
 					cols="40"
-					className="textLink"
+					className="bg-yellow-200/70 p-4 max-w-full"
 					onChange={onChange}
 					value={value}
 					disabled={disabled}
