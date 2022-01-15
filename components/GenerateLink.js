@@ -35,8 +35,18 @@ function GenerateLink({ randomLink }) {
 					<>
 						<h4>{entireLink}</h4>
 						<div>
-							<button onClick={copyLink}>Copy</button>
-							<button onClick={deleteLink}>Delete!</button>
+							<button
+								className="p-2 rounded border-2 bg-blue-200 mt-4"
+								onClick={copyLink}
+							>
+								Copy
+							</button>
+							<button
+								className="p-2 rounded border-2 bg-red-800 mt-4 text-white"
+								onClick={deleteLink}
+							>
+								Delete!
+							</button>
 						</div>
 					</>
 				) : (

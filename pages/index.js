@@ -56,7 +56,7 @@ export default function Home() {
 			</Head>
 			<div className="container bg-gray-200 min-h-screen m-auto min-w-full">
 				<div className="flex flex-col flex-wrap justify-center place-content-center">
-					<div className="p-20 text-center">
+					<div className="p-10 text-center">
 						<h1 className="text-4xl">Welcome to Secure Ioio Link</h1>
 						<p className="mt-2">
 							Share secure links to send data confidentially.
@@ -75,16 +75,16 @@ export default function Home() {
 									placeholder={"Write your text here"}
 								></TextLinkArea>
 							</div>
-							<div style={{ marginTop: "10px" }}>
+							<div>
 								<button
-									className="btn"
+									className="p-4 mt-4 bg-blue-500 text-white rounded"
 									onClick={generateLink}
 									variant="primary"
 								>
 									Generate link
 								</button>{" "}
 								<button
-									className="btn secondary"
+									className="p-4 mt-4 bg-gray-500 text-white rounded"
 									onClick={clearText}
 									variant="secondary"
 								>
