@@ -1,4 +1,3 @@
-import styles from "./GenerateLink.module.css";
 import { useState } from "react";
 
 function GenerateLink({ randomLink }) {
@@ -31,24 +30,18 @@ function GenerateLink({ randomLink }) {
 
 	return (
 		<>
-			<div className={styles.box}>
+			<div>
 				{!deleted ? (
 					<>
 						<h4>{entireLink}</h4>
 						<div>
-							<button className="btn" onClick={copyLink}>
-								Copy
-							</button>
-							<button onClick={deleteLink} className="btn danger">
-								Delete!
-							</button>
+							<button onClick={copyLink}>Copy</button>
+							<button onClick={deleteLink}>Delete!</button>
 						</div>
 					</>
 				) : (
 					<>
-						<h4
-							className={styles.alert}
-						>{`Link id ${randomLink} was delete!`}</h4>
+						<h4>{`Link id ${randomLink} was delete!`}</h4>
 					</>
 				)}
 			</div>
