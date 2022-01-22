@@ -62,9 +62,9 @@ const Secret = () => {
 							Data will be erased after being read <b>one time</b>
 						</p>
 					</div>
-					<div className="bg-white p-20 h-screen w-3/6 text-center shadow-lg rounded m-auto">
+					<div className="bg-white p-10 h-screen xl:w-3/5 lg:w-3/5 w-screen md:w-3/4 text-center shadow-lg rounded m-auto">
 						{link ? (
-							<>
+							<div className="flex flex-col place-content-center md:w-full">
 								<h2 className="mb-4">Link id: {router.query.pid}</h2>
 								<TextLinkArea
 									value={link.message}
@@ -75,7 +75,7 @@ const Secret = () => {
 										<b>This link is already burned!</b>
 									</p>
 								</div>
-							</>
+							</div>
 						) : null}
 						{showNotExist ? <NotLink></NotLink> : null}
 

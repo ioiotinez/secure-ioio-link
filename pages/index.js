@@ -66,15 +66,13 @@ export default function Home() {
 						</p>
 					</div>
 
-					<div className="bg-white p-20 h-screen w-3/6 text-center shadow-lg rounded m-auto">
-						<div>
-							<div>
-								<TextLinkArea
-									value={textLink}
-									onChange={handleTextLink}
-									placeholder={"Write your text here"}
-								></TextLinkArea>
-							</div>
+					<div className="bg-white p-10 h-screen xl:w-3/5 lg:w-3/5 w-screen md:w-3/5 text-center shadow-lg rounded m-auto">
+						<div className="flex flex-col place-content-center md:w-full">
+							<TextLinkArea
+								value={textLink}
+								onChange={handleTextLink}
+								placeholder={"Write your text here"}
+							></TextLinkArea>
 							<div>
 								<button
 									className="p-4 mt-4 bg-blue-500 text-white rounded"
