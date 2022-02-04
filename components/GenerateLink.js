@@ -15,6 +15,7 @@ function GenerateLink({ randomLink }) {
 	};
 
 	const deleteLink = async () => {
+		setDeleted(true);
 		await fetch("/api/deleteLink?", {
 			body: JSON.stringify({
 				code: randomLink,
@@ -25,7 +26,6 @@ function GenerateLink({ randomLink }) {
 			},
 			method: "DELETE",
 		});
-		setDeleted(true);
 	};
 
 	return (
@@ -35,9 +35,13 @@ function GenerateLink({ randomLink }) {
 					<div className="m-3 rounded-lg shadow-md">
 						<div className="m-3">
 							<div className="underline">
-								{entireLink}
+								<input
+									className="bg-blue-200 font-normal p-1 rounded border-2 border-black"
+									value={entireLink}
+									disabled
+								/>
 								<button
-									className="ml-2 text-sm p-2 rounded border-2 bg-blue-200 mt-4"
+									className="ml-2 text-sm p-2 rounded border-2 bg-blue-200 mt-4 hover:font-black focus:ring focus:ring-blue-300"
 									onClick={copyLink}
 								>
 									Copy
@@ -46,7 +50,7 @@ function GenerateLink({ randomLink }) {
 						</div>
 						<div>
 							<button
-								className="p-2 rounded border-2 bg-red-800 mt-4 mb-4 text-white"
+								className="p-2 rounded border-2 bg-red-800 mt-4 mb-4 text-white hover:bg-white hover:text-red-800 focus:ring-black"
 								onClick={deleteLink}
 							>
 								Delete!
